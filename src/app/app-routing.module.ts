@@ -1,5 +1,3 @@
-import { FirstComponent } from "./components/first/first.component";
-import { SecondComponent } from "./components/second/second.component";
 import { DogsListComponent } from "./components/dogs-list/dogs-list.component";
 import { BreedComponent } from "./components/breed/breed.component";
 
