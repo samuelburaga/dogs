@@ -1,5 +1,6 @@
 <ul>
-	<li *ngFor="let breed of breedsArray">
-		<a routerLink="/breed-component" routerLinkActive="active" ariaCurrentWhenActive="page">{{ breed }}</a>
+	<li *ngFor="let name of breedsArray">
+		<!-- <a routerLink="breed/:{{ breed }}" routerLinkActive="active" ariaCurrentWhenActive="page">{{ breed }}</a> -->
+		<a [routerLink]="['/breed', name]" routerLinkActive="active" ariaCurrentWhenActive="page">{{ name }}</a>
 	</li>
 </ul>

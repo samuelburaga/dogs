@@ -9,6 +9,7 @@ export class DogsListComponent {
 	breeds: Object = {};
 	breedsArray: string[] = [];
 	url: string = "https://dog.ceo/api/breeds/list/all";
+
 	ngOnInit(): void {
 		fetch(this.url)
 			.then((res) => {
