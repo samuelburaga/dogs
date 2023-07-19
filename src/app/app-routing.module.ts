@@ -8,8 +8,6 @@ import { RouterModule, Routes } from "@angular/router";
 
 const routes: Routes = [
 	{ path: "dogs-list-component", component: DogsListComponent },
-	{ path: "first-component", component: FirstComponent },
-	{ path: "second-component", component: SecondComponent },
 	{ path: "breed/:name", component: BreedComponent },
 ];
 
