@@ -6,7 +6,6 @@ import { AppComponent } from "./app.component";
 import { FirstComponent } from "./components/first/first.component";
 import { SecondComponent } from "./components/second/second.component";
 import { DogsListComponent } from "./components/dogs-list/dogs-list.component";
-import { HttpClient, HttpClientModule } from "@angular/common/http";
 
 @NgModule({
 	declarations: [AppComponent, FirstComponent, SecondComponent, DogsListComponent],
