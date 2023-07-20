@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
 	selector: "app-dogs-list",
@@ -10,14 +11,17 @@ export class DogsListComponent {
 	breedsArray: string[] = [];
 	url: string = "https://dog.ceo/api/breeds/list/all";
 
+	constructor(private http: HttpClient) {}
+
 	ngOnInit(): void {
-		fetch(this.url)
-			.then((res) => {
-				return res.json();
-			})
-			.then((data) => {
+		this.http.get<any>(this.url).subscribe({
+			next: (data) => {
 				this.breeds = data;
 				this.breedsArray = Object.keys(data.message);
-			});
+			},
+			error: (error) => {
+				console.error("Error fetching dogs:", error);
+			},
+		});
 	}
 }

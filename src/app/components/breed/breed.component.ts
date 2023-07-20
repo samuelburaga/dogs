@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { HttpClient } from "@angular/common/http";
 @Component({
 	selector: "app-breed",
 	templateUrl: "./breed.component.html",
@@ -9,9 +10,13 @@ export class BreedComponent implements OnInit {
 	url: string = "https://dog.ceo/api/breed/";
 	subBreed: Object = {};
 	imageURL: string = "";
-
 	breedName: string = "hound";
-	constructor(private route: ActivatedRoute) {}
+
+	constructor(
+		private http: HttpClient,
+		private route: ActivatedRoute,
+	) {}
+
 	ngOnInit(): void {
 		this.route.paramMap.subscribe((params) => {
 			const breed = params.get("name");
@@ -20,13 +25,15 @@ export class BreedComponent implements OnInit {
 			}
 		});
 		this.url = this.url + this.breedName + "/images";
-		fetch(this.url)
-			.then((res) => {
-				return res.json();
-			})
-			.then((data) => {
+
+		this.http.get<any>(this.url).subscribe({
+			next: (data) => {
 				this.subBreed = data;
 				this.imageURL = data.message[0];
-			});
+			},
+			error: (error) => {
+				console.error("Error fetching dogs:", error);
+			},
+		});
 	}
 }
