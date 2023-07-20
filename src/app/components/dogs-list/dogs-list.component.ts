@@ -18,7 +18,7 @@ export class DogsListComponent {
 	) {}
 
 	ngOnInit(): void {
-		this.http.get<any>(this.url).subscribe({
+		this.apiService.getAllDogs(this.url).subscribe({
 			next: (data) => {
 				this.breeds = data;
 				this.breedsArray = Object.keys(data.message);
