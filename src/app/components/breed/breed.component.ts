@@ -8,9 +8,13 @@ import { HttpClient } from "@angular/common/http";
 })
 export class BreedComponent implements OnInit {
 	url: string = "https://dog.ceo/api/breed/";
-	subBreed: Object = {};
+	breed: Object = {};
+	breedName: string = "";
 	imageURL: string = "";
-	breedName: string = "hound";
+
+	subBreed: Object = {};
+	subBreedsList: string[] = [];
+	subBreedUrl: string = "https://dog.ceo/api/breed/";
 
 	constructor(
 		private http: HttpClient,
@@ -24,15 +28,28 @@ export class BreedComponent implements OnInit {
 				this.breedName = breed;
 			}
 		});
+
 		this.url = this.url + this.breedName + "/images";
 
 		this.http.get<any>(this.url).subscribe({
 			next: (data) => {
-				this.subBreed = data;
+				this.breed = data;
 				this.imageURL = data.message[0];
 			},
 			error: (error) => {
 				console.error("Error fetching dogs:", error);
+			},
+		});
+
+		// fetch sub-breed
+		this.subBreedUrl = this.subBreedUrl + this.breedName + "/list";
+		this.http.get<any>(this.subBreedUrl).subscribe({
+			next: (data) => {
+				this.subBreed = data;
+				this.subBreedsList = data.message;
+			},
+			error: (error) => {
+				console.error("Error fetching dog sub-breed:", error);
 			},
 		});
 	}

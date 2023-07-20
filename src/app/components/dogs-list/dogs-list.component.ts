@@ -9,7 +9,7 @@ import { ApiService } from "src/app/services/api.service";
 })
 export class DogsListComponent implements OnInit {
 	breeds: Object = {};
-	breedsArray: string[] = [];
+	breedsList: string[] = [];
 	url: string = "https://dog.ceo/api/breeds/list/all";
 
 	constructor(
@@ -24,7 +24,7 @@ export class DogsListComponent implements OnInit {
 		this.apiService.getAllDogs(this.url).subscribe({
 			next: (data) => {
 				this.breeds = data;
-				this.breedsArray = Object.keys(data.message);
+				this.breedsList = Object.keys(data.message);
 			},
 			error: (error) => {
 				console.error("Error fetching dogs:", error);

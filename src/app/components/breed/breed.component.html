@@ -1,5 +1,15 @@
 <div>
 	<p>{{ breedName }}</p>
 	<img src="{{ imageURL }}" />
-	<h2>Sub-breed</h2>
+	<h2>Sub breeds</h2>
+	<ul>
+		<li *ngFor="let subBreed of subBreedsList">
+			<a
+				[routerLink]="['/dogs/breed/subBreed', subBreed]"
+				routerLinkActive="active"
+				ariaCurrentWhenActive="page"
+				>{{ subBreed }}</a
+			>
+		</li>
+	</ul>
 </div>

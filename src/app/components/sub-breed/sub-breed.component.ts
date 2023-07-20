@@ -1,10 +1,8 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'app-sub-breed',
-  templateUrl: './sub-breed.component.html',
-  styleUrls: ['./sub-breed.component.css']
+	selector: "app-sub-breed",
+	templateUrl: "./sub-breed.component.html",
+	styleUrls: ["./sub-breed.component.css"],
 })
-export class SubBreedComponent {
-
-}
+export class SubBreedComponent {}
