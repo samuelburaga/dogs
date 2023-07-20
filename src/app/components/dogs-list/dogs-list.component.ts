@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { ApiService } from "src/app/services/api.service";
 
@@ -7,7 +7,7 @@ import { ApiService } from "src/app/services/api.service";
 	templateUrl: "./dogs-list.component.html",
 	styleUrls: ["./dogs-list.component.css"],
 })
-export class DogsListComponent {
+export class DogsListComponent implements OnInit {
 	breeds: Object = {};
 	breedsArray: string[] = [];
 	url: string = "https://dog.ceo/api/breeds/list/all";
@@ -18,6 +18,9 @@ export class DogsListComponent {
 	) {}
 
 	ngOnInit(): void {
+		this.prepareAllDogs();
+	}
+	prepareAllDogs() {
 		this.apiService.getAllDogs(this.url).subscribe({
 			next: (data) => {
 				this.breeds = data;

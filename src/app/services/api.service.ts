@@ -6,6 +6,7 @@ import { Observable } from "rxjs";
 })
 export class ApiService {
 	constructor(private http: HttpClient) {}
+
 	getAllDogs(url: string): Observable<any> {
 		return this.http.get<any>(url);
 	}
