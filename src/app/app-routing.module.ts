@@ -5,7 +5,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
 const routes: Routes = [
-	{ path: "dogs-list-component", component: DogsListComponent },
+	{ path: "dogs", component: DogsListComponent },
 	{ path: "breed/:name", component: BreedComponent },
 ];
 
