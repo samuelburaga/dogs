@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { ApiService } from "src/app/services/api.service";
 
 @Component({
 	selector: "app-dogs-list",
@@ -11,7 +12,10 @@ export class DogsListComponent {
 	breedsArray: string[] = [];
 	url: string = "https://dog.ceo/api/breeds/list/all";
 
-	constructor(private http: HttpClient) {}
+	constructor(
+		private http: HttpClient,
+		private apiService: ApiService,
+	) {}
 
 	ngOnInit(): void {
 		this.http.get<any>(this.url).subscribe({
