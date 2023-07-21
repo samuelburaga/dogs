@@ -2,6 +2,7 @@
 
 This project is a small web application
 implemented with the purpose of studying the concept of routing in Angular.
+The application fetches data from the [dog API](https://dog.ceo/dog-api/documentation/) and displays it on the web page.
 
 > ## Getting Started
 
@@ -23,7 +24,7 @@ Prerequisites
 git clone https://github.com/samuelburaga/dogs.git
 ```
 
-5. Run "ng serve" or "ng s" in the terminal in the root folder of the project and open the link shown in the command line (Example: localhost:4200)
+5. Run "ng serve" or "ng s" in the terminal in the root folder of the project and open the link shown in the command line with a browser like Chrome (Example: localhost:4200)
 
 > ## Usage
 
