@@ -1,4 +1,4 @@
-<h1 align = "center"> Dogs - Angular routing implementation project </h1>
+<h1 align = "center"> Dogs - Angular routing project </h1>
 
 This project is a small web application
 implemented with the purpose of studying the concept of routing in Angular.
@@ -46,3 +46,8 @@ The application displays a list of dogs and their subcategories which can be acc
     <br clear = "all"><img src = "https://cdn.freebiesupply.com/logos/large/2x/css3-logo-png-transparent.png" width = "15%" height = "15%">
 -   Prettier - an opinionated code formatter
     <br clear = "all"><img src = "https://brandslogos.com/wp-content/uploads/images/large/prettier-logo.png" width = "12%" height = "12%">
+
+<details>
+<summary>Demo</summary>
+<video src="res/demo.mp4" controls title="Demo"></video>
+</details>
