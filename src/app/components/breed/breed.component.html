@@ -4,7 +4,7 @@
 	<img src="{{ imageURL }}" />
 	<h2 hidden="isVisible">Sub breeds:</h2>
 	<ul>
-		<li *ngFor="let subBreedName of subBreedsList">
+		<li *ngFor="let subBreedName of subBreedList">
 			<a
 				[routerLink]="['/dogs/breed/', breedName, subBreedName]"
 				routerLinkActive="active"

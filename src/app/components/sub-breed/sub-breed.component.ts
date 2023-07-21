@@ -18,12 +18,15 @@ export class SubBreedComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
+		this.prepareNamesFromURL();
+		this.prepareSubBreed();
+	}
+
+	prepareNamesFromURL() {
 		this.activatedRoute.paramMap.subscribe((params) => {
 			this.breedName = params.get("breedName");
 			this.subBreedName = params.get("subBreedName");
 		});
-
-		this.prepareSubBreed();
 	}
 
 	prepareSubBreed(): void {

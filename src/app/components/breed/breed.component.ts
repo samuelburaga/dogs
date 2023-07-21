@@ -10,7 +10,7 @@ import { ApiService } from "src/app/services/api.service";
 export class BreedComponent implements OnInit {
 	breedName: string | null = "";
 	imageURL: string = "";
-	subBreedsList: string[] = [];
+	subBreedList: string[] = [];
 	isVisible: boolean = true;
 
 	constructor(
@@ -19,6 +19,10 @@ export class BreedComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
+		this.prepareNamesFromURL();
+	}
+
+	prepareNamesFromURL() {
 		this.activatedRoute.paramMap.subscribe((params) => {
 			this.breedName = params.get("breedName");
 		});
@@ -42,7 +46,7 @@ export class BreedComponent implements OnInit {
 	prepareSubBreedList(): void {
 		this.apiService.getSubBreedList(this.breedName).subscribe({
 			next: (data) => {
-				this.subBreedsList = data.message;
+				this.subBreedList = data.message;
 			},
 			error: (error) => {
 				console.error("Error fetching dog sub-breed:", error);
