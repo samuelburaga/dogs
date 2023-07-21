@@ -36,8 +36,3 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
-
-# build
-docs/*
-!docs/index.html
-!docs/404.html
