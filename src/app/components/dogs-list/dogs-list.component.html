@@ -1,6 +1,8 @@
 <ul>
-	<li *ngFor="let name of breedsList">
+	<li *ngFor="let breedName of breedsList">
 		<!-- <a routerLink="breed/:{{ breed }}" routerLinkActive="active" ariaCurrentWhenActive="page">{{ breed }}</a> -->
-		<a [routerLink]="['/dogs/breed', name]" routerLinkActive="active" ariaCurrentWhenActive="page">{{ name }}</a>
+		<a [routerLink]="['/dogs/breed', breedName]" routerLinkActive="active" ariaCurrentWhenActive="page">{{
+			breedName
+		}}</a>
 	</li>
 </ul>

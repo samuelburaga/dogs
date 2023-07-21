@@ -5,7 +5,7 @@
 	<ul>
 		<li *ngFor="let subBreed of subBreedsList">
 			<a
-				[routerLink]="['/dogs/breed/subBreed', subBreed]"
+				[routerLink]="['/dogs/breed/', breedName, subBreed]"
 				routerLinkActive="active"
 				ariaCurrentWhenActive="page"
 				>{{ subBreed }}</a

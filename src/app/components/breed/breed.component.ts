@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
+
 @Component({
 	selector: "app-breed",
 	templateUrl: "./breed.component.html",
@@ -12,7 +13,7 @@ export class BreedComponent implements OnInit {
 	breedName: string = "";
 	imageURL: string = "";
 
-	subBreed: Object = {};
+	subBreeds: Object = {};
 	subBreedsList: string[] = [];
 	subBreedUrl: string = "https://dog.ceo/api/breed/";
 
@@ -23,7 +24,7 @@ export class BreedComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.route.paramMap.subscribe((params) => {
-			const breed = params.get("name");
+			const breed = params.get("breedName");
 			if (breed) {
 				this.breedName = breed;
 			}
@@ -45,7 +46,7 @@ export class BreedComponent implements OnInit {
 		this.subBreedUrl = this.subBreedUrl + this.breedName + "/list";
 		this.http.get<any>(this.subBreedUrl).subscribe({
 			next: (data) => {
-				this.subBreed = data;
+				this.subBreeds = data;
 				this.subBreedsList = data.message;
 			},
 			error: (error) => {
