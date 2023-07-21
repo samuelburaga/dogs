@@ -4,6 +4,8 @@ This project is a small web application
 implemented with the purpose of studying the concept of routing in Angular.
 The application fetches data from the [dog API](https://dog.ceo/dog-api/documentation/) and displays it on the web page.
 
+The app is deployed on GitHub Pages. You can see the final result here: https://samuelburaga.github.io/dogs/dogs.
+
 > ## Getting Started
 
 Prerequisites
@@ -53,6 +55,9 @@ The application displays a list of dogs and their subcategories which can be acc
     <br clear = "all"><img src = "https://brandslogos.com/wp-content/uploads/images/large/prettier-logo.png" width = "12%" height = "12%">
 
 <details>
+
 <summary>Demo</summary>
-<video src="res/demo.mp4" controls title="Demo"></video>
+
+![Demo](res/demo.png)
+
 </details>
