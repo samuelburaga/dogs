@@ -8,18 +8,17 @@ import { ApiService } from "src/app/services/api.service";
 	styleUrls: ["./sub-breed.component.css"],
 })
 export class SubBreedComponent implements OnInit {
-	url: string = "https://dog.ceo/api/breed/";
 	breedName: string | null = "";
 	subBreedName: string | null = "";
 	imageURL: string = "";
 
 	constructor(
 		private apiService: ApiService,
-		private route: ActivatedRoute,
+		private activatedRoute: ActivatedRoute,
 	) {}
 
 	ngOnInit(): void {
-		this.route.paramMap.subscribe((params) => {
+		this.activatedRoute.paramMap.subscribe((params) => {
 			this.breedName = params.get("breedName");
 			this.subBreedName = params.get("subBreedName");
 		});
@@ -27,9 +26,8 @@ export class SubBreedComponent implements OnInit {
 		this.prepareSubBreed();
 	}
 
-	prepareSubBreed() {
-		this.url = this.url + this.breedName + "/" + this.subBreedName + "/images";
-		this.apiService.getData(this.url).subscribe({
+	prepareSubBreed(): void {
+		this.apiService.getSubBreedImages(this.breedName, this.subBreedName).subscribe({
 			next: (data) => {
 				this.imageURL = data.message[1];
 			},

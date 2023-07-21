@@ -8,29 +8,26 @@ import { ApiService } from "src/app/services/api.service";
 	styleUrls: ["./breed.component.css"],
 })
 export class BreedComponent implements OnInit {
-	url: string = "https://dog.ceo/api/breed/";
 	breedName: string | null = "";
 	imageURL: string = "";
 	subBreedsList: string[] = [];
-	subBreedsUrl: string = "https://dog.ceo/api/breed/";
 	isVisible: boolean = true;
 
 	constructor(
 		private apiService: ApiService,
-		private route: ActivatedRoute,
+		private activatedRoute: ActivatedRoute,
 	) {}
 
 	ngOnInit(): void {
-		this.route.paramMap.subscribe((params) => {
+		this.activatedRoute.paramMap.subscribe((params) => {
 			this.breedName = params.get("breedName");
 		});
 		this.prepareBreed();
-		this.prepareSubBreedsList();
+		this.prepareSubBreedList();
 	}
 
-	prepareBreed() {
-		this.url = this.url + this.breedName + "/images";
-		this.apiService.getData(this.url).subscribe({
+	prepareBreed(): void {
+		this.apiService.getBreedImages(this.breedName).subscribe({
 			next: (data) => {
 				this.imageURL = data.message[0];
 			},
@@ -42,9 +39,8 @@ export class BreedComponent implements OnInit {
 		});
 	}
 
-	prepareSubBreedsList() {
-		this.subBreedsUrl = this.subBreedsUrl + this.breedName + "/list";
-		this.apiService.getData(this.subBreedsUrl).subscribe({
+	prepareSubBreedList(): void {
+		this.apiService.getSubBreedList(this.breedName).subscribe({
 			next: (data) => {
 				this.subBreedsList = data.message;
 			},

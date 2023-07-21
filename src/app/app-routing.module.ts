@@ -1,4 +1,4 @@
-import { DogsListComponent } from "./components/dogs-list/dogs-list.component";
+import { DogListComponent } from "./components/dog-list/dog-list.component";
 import { BreedComponent } from "./components/breed/breed.component";
 import { SubBreedComponent } from "./components/sub-breed/sub-breed.component";
 import { ErrorComponent } from "./components/error/error.component";
@@ -7,7 +7,8 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
 const routes: Routes = [
-	{ path: "dogs", component: DogsListComponent },
+	{ path: "", redirectTo: "dogs", pathMatch: "full" },
+	{ path: "dogs", component: DogListComponent },
 	{ path: "dogs/breed/:breedName", component: BreedComponent },
 	{ path: "dogs/breed/:breedName/:subBreedName", component: SubBreedComponent },
 	{ path: "error", component: ErrorComponent },
