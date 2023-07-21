@@ -8,7 +8,7 @@ import { RouterModule, Routes } from "@angular/router";
 const routes: Routes = [
 	{ path: "dogs", component: DogsListComponent },
 	{ path: "dogs/breed/:breedName", component: BreedComponent },
-	{ path: "dogs/breed/:breedName/:subBreed", component: SubBreedComponent },
+	{ path: "dogs/breed/:breedName/:subBreedName", component: SubBreedComponent },
 ];
 
 @NgModule({

@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
+import { ApiService } from "src/app/services/api.service";
 
 @Component({
 	selector: "app-breed",
@@ -9,44 +9,41 @@ import { HttpClient } from "@angular/common/http";
 })
 export class BreedComponent implements OnInit {
 	url: string = "https://dog.ceo/api/breed/";
-	breed: Object = {};
-	breedName: string = "";
+	breedName: string | null = "";
 	imageURL: string = "";
-
-	subBreeds: Object = {};
 	subBreedsList: string[] = [];
-	subBreedUrl: string = "https://dog.ceo/api/breed/";
+	subBreedsUrl: string = "https://dog.ceo/api/breed/";
 
 	constructor(
-		private http: HttpClient,
+		private apiService: ApiService,
 		private route: ActivatedRoute,
 	) {}
 
 	ngOnInit(): void {
 		this.route.paramMap.subscribe((params) => {
-			const breed = params.get("breedName");
-			if (breed) {
-				this.breedName = breed;
-			}
+			this.breedName = params.get("breedName");
 		});
 
-		this.url = this.url + this.breedName + "/images";
+		this.prepareBreed();
+		this.prepareSubBreedsList();
+	}
 
-		this.http.get<any>(this.url).subscribe({
+	prepareBreed() {
+		this.url = this.url + this.breedName + "/images";
+		this.apiService.getData(this.url).subscribe({
 			next: (data) => {
-				this.breed = data;
 				this.imageURL = data.message[0];
 			},
 			error: (error) => {
 				console.error("Error fetching dogs:", error);
 			},
 		});
+	}
 
-		// fetch sub-breed
-		this.subBreedUrl = this.subBreedUrl + this.breedName + "/list";
-		this.http.get<any>(this.subBreedUrl).subscribe({
+	prepareSubBreedsList() {
+		this.subBreedsUrl = this.subBreedsUrl + this.breedName + "/list";
+		this.apiService.getData(this.subBreedsUrl).subscribe({
 			next: (data) => {
-				this.subBreeds = data;
 				this.subBreedsList = data.message;
 			},
 			error: (error) => {
