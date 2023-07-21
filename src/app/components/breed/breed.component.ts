@@ -13,6 +13,7 @@ export class BreedComponent implements OnInit {
 	imageURL: string = "";
 	subBreedsList: string[] = [];
 	subBreedsUrl: string = "https://dog.ceo/api/breed/";
+	isVisible: boolean = true;
 
 	constructor(
 		private apiService: ApiService,
@@ -23,7 +24,6 @@ export class BreedComponent implements OnInit {
 		this.route.paramMap.subscribe((params) => {
 			this.breedName = params.get("breedName");
 		});
-
 		this.prepareBreed();
 		this.prepareSubBreedsList();
 	}
@@ -36,6 +36,8 @@ export class BreedComponent implements OnInit {
 			},
 			error: (error) => {
 				console.error("Error fetching dogs:", error);
+				this.breedName = this.breedName + " breed doesn't exist!";
+				this.isVisible = false;
 			},
 		});
 	}

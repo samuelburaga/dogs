@@ -35,6 +35,7 @@ export class SubBreedComponent implements OnInit {
 			},
 			error: (error) => {
 				console.error("Error fetching dogs:", error);
+				this.subBreedName = this.subBreedName + " sub breed doesn't exist!";
 			},
 		});
 	}
