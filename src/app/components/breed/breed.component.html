@@ -1,0 +1,16 @@
+<div>
+	<app-all-dogs-button></app-all-dogs-button>
+	<h1>{{ breedName }}</h1>
+	<img src="{{ imageURL }}" />
+	<h2 hidden="isVisible">Sub breeds:</h2>
+	<ul>
+		<li *ngFor="let subBreedName of subBreedList">
+			<a
+				[routerLink]="['/dogs/breed/', breedName, subBreedName]"
+				routerLinkActive="active"
+				ariaCurrentWhenActive="page"
+				>{{ subBreedName }}</a
+			>
+		</li>
+	</ul>
+</div>

@@ -1,0 +1,8 @@
+<ul>
+	<h1>Dogs (breeds) list</h1>
+	<li *ngFor="let breedName of breedList">
+		<a [routerLink]="['/dogs/breed', breedName]" routerLinkActive="active" ariaCurrentWhenActive="page">{{
+			breedName
+		}}</a>
+	</li>
+</ul>
