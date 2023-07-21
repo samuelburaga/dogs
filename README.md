@@ -3,6 +3,15 @@
 This project is a small web application
 implemented with the purpose of studying the concept of routing in Angular.
 
+> ## Getting Started
+
+Prerequisites
+
+-   A text editor like Visual Studio Code (+ necessary extensions)
+-   node js
+-   Angular CLI
+-   Typescript compiler
+
 > ## Usage
 
 The application displays a list of dogs and their subcategories which can be accessed by clicking the corresponding links. For each dog the application fetches an image of it from the API.
