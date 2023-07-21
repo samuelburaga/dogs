@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { ApiService } from "src/app/services/api.service";
 
@@ -7,7 +7,7 @@ import { ApiService } from "src/app/services/api.service";
 	templateUrl: "./sub-breed.component.html",
 	styleUrls: ["./sub-breed.component.css"],
 })
-export class SubBreedComponent {
+export class SubBreedComponent implements OnInit {
 	url: string = "https://dog.ceo/api/breed/";
 	breedName: string | null = "";
 	subBreedName: string | null = "";
