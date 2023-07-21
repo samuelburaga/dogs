@@ -8,9 +8,10 @@ import { DogsListComponent } from "./components/dogs-list/dogs-list.component";
 import { BreedComponent } from "./components/breed/breed.component";
 import { SubBreedComponent } from './components/sub-breed/sub-breed.component';
 import { AllDogsButtonComponent } from './components/all-dogs-button/all-dogs-button.component';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
-	declarations: [AppComponent, DogsListComponent, BreedComponent, SubBreedComponent, AllDogsButtonComponent],
+	declarations: [AppComponent, DogsListComponent, BreedComponent, SubBreedComponent, AllDogsButtonComponent, ErrorComponent],
 	imports: [BrowserModule, AppRoutingModule, HttpClientModule],
 	providers: [],
 	bootstrap: [AppComponent],
