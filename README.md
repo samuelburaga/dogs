@@ -1,6 +1,7 @@
-# Dogs
+<h1 align = "center"> Dogs - Angular routing implementation project </h1>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.4.
+This project is a small web application
+implemented with the purpose of studying the concept of routing in Angular.
 
 ## Development server
 
