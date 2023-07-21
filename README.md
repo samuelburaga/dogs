@@ -12,6 +12,19 @@ Prerequisites
 -   Angular CLI
 -   Typescript compiler
 
+> ## Installation
+
+1. Install node js
+2. Install the typescript compiler
+3. Install Angular CLI
+4. Clone this repository to your local machine using git clone (or download the zip file and extract it).
+
+```shell
+git clone https://github.com/samuelburaga/dogs.git
+```
+
+5. Run "ng serve" or "ng s" in the terminal in the root folder of the project and open the link shown in the command line (Example: localhost:4200)
+
 > ## Usage
 
 The application displays a list of dogs and their subcategories which can be accessed by clicking the corresponding links. For each dog the application fetches an image of it from the API.
