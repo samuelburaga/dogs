@@ -20,9 +20,7 @@ export class DogListComponent implements OnInit {
 		this.apiService.getAllDogs().subscribe({
 			next: (data) => {
 				this.breedList = Object.keys(data.message);
-				this.convertListToTree(data);
-				// console.log(data);
-				// console.log(this.breedTree);
+				this.breedTree = this.convertListToTree(data);
 			},
 			error: (error) => {
 				console.error("Error fetching dogs list:", error);
@@ -30,19 +28,27 @@ export class DogListComponent implements OnInit {
 		});
 	}
 
-	convertListToTree(data: any) {
-		// for (let dog in data.keys) {
-		// 	console.log(dog);
-		// }
-		for (let key in data) {
-			if (typeof data[key] === "object") {
-				for (let nestedKey in data[key]) {
-					console.log(nestedKey);
-					console.log(data[key][nestedKey]);
-				}
+	convertListToTree(data2: any) {
+		let tree: TreeNode[] = [];
+		for (let dog in data2["message"]) {
+			if (data2["message"][dog].length > 0) {
+				let node: { label: string; children: any } = { label: "", children: [] };
+				node.label = dog;
+				data2["message"][dog].forEach((element: string) => {
+					let sNode: { label: string } = { label: "" };
+					sNode.label = element;
+					node.children.push(sNode);
+				});
+
+				//console.log(node);
+				tree.push(node);
 			} else {
-				console.log(key);
+				let node2: { label: string } = { label: "" };
+				node2.label = dog;
+				tree.push(node2);
 			}
 		}
+		console.log(tree);
+		return tree;
 	}
 }
