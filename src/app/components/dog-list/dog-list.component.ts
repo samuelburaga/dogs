@@ -10,6 +10,7 @@ import { ApiService } from "src/app/services/api.service";
 export class DogListComponent implements OnInit {
 	breedList: string[] = [];
 	breedTree: TreeNode[] = [];
+	breedName: string = "hound";
 	constructor(private apiService: ApiService) {}
 
 	ngOnInit(): void {
@@ -31,24 +32,28 @@ export class DogListComponent implements OnInit {
 	convertListToTree(data2: any) {
 		let tree: TreeNode[] = [];
 		for (let dog in data2["message"]) {
-			if (data2["message"][dog].length > 0) {
-				let node: { label: string; children: any } = { label: "", children: [] };
-				node.label = dog;
-				data2["message"][dog].forEach((element: string) => {
-					let sNode: { label: string } = { label: "" };
-					sNode.label = element;
-					node.children.push(sNode);
-				});
+			// if (data2["message"][dog].length > 0) {
+			// 	let node: { label: string; children: any } = { label: "", children: [] };
+			// 	node.label = dog;
+			// 	data2["message"][dog].forEach((element: string) => {
+			// 		let sNode: { label: string } = { label: "" };
+			// 		sNode.label = element;
+			// 		node.children.push(sNode);
+			// 	});
 
-				//console.log(node);
-				tree.push(node);
-			} else {
-				let node2: { label: string } = { label: "" };
-				node2.label = dog;
-				tree.push(node2);
-			}
+			// 	//console.log(node);
+			// 	tree.push(node);
+			// } else {
+			let node2: { label: string } = { label: "" };
+			node2.label = dog;
+			tree.push(node2);
+			//}
 		}
-		console.log(tree);
+		//console.log(tree);
 		return tree;
+	}
+
+	onNodeSelect(event: any) {
+		this.breedName = event.node.label;
 	}
 }
