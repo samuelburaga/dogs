@@ -53,7 +53,6 @@ export class DogListComponent implements OnInit {
 
 	onNodeSelect(event: any) {
 		if (event.node.parent === undefined) {
-			console.log("Yes");
 			this.routerLink = "/dogs/breed/" + event.node.label;
 		} else {
 			this.routerLink = "/dogs/breed/" + event.node.parent.label + "/" + event.node.label;
