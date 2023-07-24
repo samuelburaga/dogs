@@ -28,6 +28,7 @@ export class BreedComponent implements OnInit {
 		});
 		this.prepareBreed();
 		this.prepareSubBreedList();
+		this.getImageSize();
 	}
 
 	prepareBreed(): void {
@@ -52,5 +53,23 @@ export class BreedComponent implements OnInit {
 				console.error("Error fetching dog sub-breed:", error);
 			},
 		});
+	}
+
+	getImageSize() {
+		// Create a new Image object
+		const img = new Image();
+
+		// Set the source of the image
+		img.src = this.imageURL;
+
+		// Wait for the image to load
+		img.onload = () => {
+			// Get the width and height of the image
+			const width = img.width;
+			const height = img.height;
+
+			// Do something with the width and height (e.g., display them on the page)
+			console.log(`The image is ${width} pixels wide and ${height} pixels tall.`);
+		};
 	}
 }

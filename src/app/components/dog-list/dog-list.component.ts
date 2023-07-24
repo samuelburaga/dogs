@@ -8,9 +8,8 @@ import { ApiService } from "src/app/services/api.service";
 	styleUrls: ["./dog-list.component.css"],
 })
 export class DogListComponent implements OnInit {
-	breedList: string[] = [];
 	breedTree: TreeNode[] = [];
-	breedName: string = "hound";
+	routerLink: string = "";
 	constructor(private apiService: ApiService) {}
 
 	ngOnInit(): void {
@@ -20,7 +19,6 @@ export class DogListComponent implements OnInit {
 	prepareAllDogs(): void {
 		this.apiService.getAllDogs().subscribe({
 			next: (data) => {
-				this.breedList = Object.keys(data.message);
 				this.breedTree = this.convertListToTree(data);
 			},
 			error: (error) => {
@@ -29,31 +27,36 @@ export class DogListComponent implements OnInit {
 		});
 	}
 
-	convertListToTree(data2: any) {
+	convertListToTree(data: any) {
 		let tree: TreeNode[] = [];
-		for (let dog in data2["message"]) {
-			// if (data2["message"][dog].length > 0) {
-			// 	let node: { label: string; children: any } = { label: "", children: [] };
-			// 	node.label = dog;
-			// 	data2["message"][dog].forEach((element: string) => {
-			// 		let sNode: { label: string } = { label: "" };
-			// 		sNode.label = element;
-			// 		node.children.push(sNode);
-			// 	});
 
-			// 	//console.log(node);
-			// 	tree.push(node);
-			// } else {
-			let node2: { label: string } = { label: "" };
-			node2.label = dog;
-			tree.push(node2);
-			//}
+		for (let dog in data["message"]) {
+			if (data["message"][dog].length > 0) {
+				let node: { label: string; children: any } = { label: dog, children: [] };
+
+				data["message"][dog].forEach((breed: string) => {
+					let sNode: { label: string } = { label: "" };
+					sNode.label = breed;
+					node.children.push(sNode);
+				});
+
+				tree.push(node);
+			} else {
+				let node: { label: string } = { label: "" };
+				node.label = dog;
+				tree.push(node);
+			}
 		}
-		//console.log(tree);
+
 		return tree;
 	}
 
 	onNodeSelect(event: any) {
-		this.breedName = event.node.label;
+		if (event.node.parent === undefined) {
+			console.log("Yes");
+			this.routerLink = "/dogs/breed/" + event.node.label;
+		} else {
+			this.routerLink = "/dogs/breed/" + event.node.parent.label + "/" + event.node.label;
+		}
 	}
 }
