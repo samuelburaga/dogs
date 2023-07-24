@@ -28,33 +28,21 @@ export class DogListComponent implements OnInit {
 	}
 
 	convertListToTree(data: any) {
-		let tree: TreeNode[] = [];
-
-		for (let dog in data["message"]) {
-			if (data["message"][dog].length > 0) {
-				let node: { label: string; children: any } = { label: dog, children: [] };
-
-				data["message"][dog].forEach((breed: string) => {
-					let childrenNode: { label: string } = { label: breed };
-					node.children.push(childrenNode);
-				});
-
-				tree.push(node);
-			} else {
-				let node: { label: string } = { label: "" };
-				node.label = dog;
-				tree.push(node);
-			}
-		}
-
-		return tree;
+		return Object.keys(data.message).map((breed) => ({
+			label: breed,
+			children: data.message[breed].map((subBreed: string) => ({
+				label: subBreed,
+			})),
+		}));
 	}
 
-	onNodeSelect(event: any) {
-		if (event.node.parent === undefined) {
-			this.routerLink = "/dogs/breed/" + event.node.label;
-		} else {
-			this.routerLink = "/dogs/breed/" + event.node.parent.label + "/" + event.node.label;
+	onNodeSelect(event: any): void {
+		this.routerLink = "/dogs/breed/";
+
+		if (event.node.parent) {
+			this.routerLink += event.node.parent.label + "/";
 		}
+
+		this.routerLink += event.node.label;
 	}
 }

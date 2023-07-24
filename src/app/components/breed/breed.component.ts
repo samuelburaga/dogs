@@ -28,6 +28,7 @@ export class BreedComponent implements OnInit {
 		this.activatedRoute.paramMap.subscribe((params) => {
 			this.breedName = params.get("breedName");
 		});
+
 		this.prepareBreed();
 		this.prepareSubBreedList();
 	}
@@ -36,7 +37,7 @@ export class BreedComponent implements OnInit {
 		this.apiService.getBreedImages(this.breedName).subscribe({
 			next: (data) => {
 				this.imageURL = data.message[0];
-				this.getImageSize();
+				this.setCardSize();
 			},
 			error: (error) => {
 				console.error("Error fetching dogs:", error);
@@ -57,7 +58,7 @@ export class BreedComponent implements OnInit {
 		});
 	}
 
-	getImageSize(): void {
+	setCardSize(): void {
 		let image: HTMLImageElement = new Image();
 		image.src = this.imageURL;
 
