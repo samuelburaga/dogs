@@ -35,9 +35,8 @@ export class DogListComponent implements OnInit {
 				let node: { label: string; children: any } = { label: dog, children: [] };
 
 				data["message"][dog].forEach((breed: string) => {
-					let sNode: { label: string } = { label: "" };
-					sNode.label = breed;
-					node.children.push(sNode);
+					let childrenNode: { label: string } = { label: breed };
+					node.children.push(childrenNode);
 				});
 
 				tree.push(node);

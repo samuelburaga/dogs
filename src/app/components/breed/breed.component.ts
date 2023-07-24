@@ -10,8 +10,8 @@ import { ApiService } from "src/app/services/api.service";
 export class BreedComponent implements OnInit {
 	breedName: string | null = "";
 	imageURL: string = "";
-	imageWidth: number = 0;
-	imageHeight: number = 0;
+	cardWidth: number = 0;
+	cardHeight: number = 0;
 	subBreedList: string[] = [];
 	isVisible: boolean = true;
 
@@ -24,7 +24,7 @@ export class BreedComponent implements OnInit {
 		this.prepareNamesFromURL();
 	}
 
-	prepareNamesFromURL() {
+	prepareNamesFromURL(): void {
 		this.activatedRoute.paramMap.subscribe((params) => {
 			this.breedName = params.get("breedName");
 		});
@@ -57,13 +57,14 @@ export class BreedComponent implements OnInit {
 		});
 	}
 
-	getImageSize() {
+	getImageSize(): void {
 		let image: HTMLImageElement = new Image();
 		image.src = this.imageURL;
+
 		image.onload = () => {
-			this.imageWidth = image.width;
-			this.imageHeight = image.height;
-			console.log(`The image is ${this.imageWidth} pixels wide and ${this.imageHeight} pixels tall.`);
+			this.cardWidth = image.width + 100;
+			this.cardHeight = image.height + 100;
+			console.log(`The image is ${image.width} pixels wide and ${image.height} pixels tall.`);
 		};
 	}
 }
