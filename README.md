@@ -58,6 +58,9 @@ The application displays a list of dogs and their subcategories which can be acc
 
 <summary>Demo</summary>
 
-![Demo](res/demo.png)
+![Main page](<res/main page.png>)
+![Breed page](<res/breed page.png>)
+![Subbreed page](<res/subbreed page.png>)
+![Error page](<res/error page.png>)
 
 </details>

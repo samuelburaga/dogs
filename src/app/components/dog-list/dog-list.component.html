@@ -1,8 +1,12 @@
-<ul>
-	<h1>Dogs (breeds) list</h1>
-	<li *ngFor="let breedName of breedList">
-		<a [routerLink]="['/dogs/breed', breedName]" routerLinkActive="active" ariaCurrentWhenActive="page">{{
-			breedName
-		}}</a>
-	</li>
-</ul>
+<br />
+<br />
+<h1>Dogs (breeds) list</h1>
+<p-tree
+	class="tree"
+	[value]="breedTree"
+	selectionMode="single"
+	(onNodeSelect)="onNodeSelect($event)"
+	routerLink="{{ routerLink }}"
+	routerLinkActive="active"
+	ariaCurrentWhenActive="page"
+></p-tree>
