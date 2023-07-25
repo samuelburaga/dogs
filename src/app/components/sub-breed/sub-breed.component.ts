@@ -35,8 +35,8 @@ export class SubBreedComponent implements OnInit {
 				this.imageURL = data.message[1];
 			},
 			error: (error) => {
-				console.error("Error fetching dogs:", error);
-				this.subBreedName = this.subBreedName + " sub breed doesn't exist!";
+				console.error("Error fetching subbreed:", error);
+				this.subBreedName = this.subBreedName + " subbreed doesn't exist!";
 			},
 		});
 	}

@@ -22,7 +22,7 @@ export class DogListComponent implements OnInit {
 				this.breedTree = this.convertListToTree(data);
 			},
 			error: (error) => {
-				console.error("Error fetching dogs list:", error);
+				console.error("Error fetching dogs:", error);
 			},
 		});
 	}
