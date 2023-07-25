@@ -19013,7 +19013,7 @@
 									this.breedTree = this.convertListToTree(t);
 								},
 								error: (t) => {
-									console.error("Error fetching dogs list:", t);
+									console.error("Error fetching dogs:", t);
 								},
 							});
 						}
@@ -19125,7 +19125,7 @@
 										this.imageURL = t.message[0];
 									},
 									error: (t) => {
-										console.error("Error fetching dogs:", t),
+										console.error("Error fetching breed:", t),
 											(this.breedName = this.breedName + " breed doesn't exist!"),
 											(this.isVisible = !1);
 									},
@@ -19191,8 +19191,8 @@
 										this.imageURL = t.message[1];
 									},
 									error: (t) => {
-										console.error("Error fetching dogs:", t),
-											(this.subBreedName = this.subBreedName + " sub breed doesn't exist!");
+										console.error("Error fetching subbreed:", t),
+											(this.subBreedName = this.subBreedName + " subbreed doesn't exist!");
 									},
 								});
 							}

@@ -37,7 +37,7 @@ export class BreedComponent implements OnInit {
 				this.imageURL = data.message[0];
 			},
 			error: (error) => {
-				console.error("Error fetching dogs:", error);
+				console.error("Error fetching breed:", error);
 				this.breedName = this.breedName + " breed doesn't exist!";
 				this.isVisible = false;
 			},
