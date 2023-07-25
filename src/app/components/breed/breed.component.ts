@@ -10,8 +10,6 @@ import { ApiService } from "src/app/services/api.service";
 export class BreedComponent implements OnInit {
 	breedName: string | null = "";
 	imageURL: string = "";
-	cardWidth: number = 0;
-	cardHeight: number = 0;
 	subBreedList: string[] = [];
 	isVisible: boolean = true;
 
@@ -37,7 +35,6 @@ export class BreedComponent implements OnInit {
 		this.apiService.getBreedImages(this.breedName).subscribe({
 			next: (data) => {
 				this.imageURL = data.message[0];
-				this.setCardSize();
 			},
 			error: (error) => {
 				console.error("Error fetching dogs:", error);
@@ -56,16 +53,5 @@ export class BreedComponent implements OnInit {
 				console.error("Error fetching dog sub-breed:", error);
 			},
 		});
-	}
-
-	setCardSize(): void {
-		let image: HTMLImageElement = new Image();
-		image.src = this.imageURL;
-
-		image.onload = () => {
-			this.cardWidth = image.width + 100;
-			this.cardHeight = image.height + 100;
-			console.log(`The image is ${image.width} pixels wide and ${image.height} pixels tall.`);
-		};
 	}
 }
